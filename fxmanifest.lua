@@ -32,7 +32,7 @@ files {
 -- Dependencies
 dependencies {
     'oxmysql',
-    'es_extended' -- or your framework of choice
+    'ws_framework' -- or your framework of choice
 }
 
 -- Add this if you want to use the new audio system
