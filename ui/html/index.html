@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Creator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="character-creator">
+        <!-- Character Selection Screen -->
+        <div id="character-selection" class="screen active">
+            <div class="header">
+                <h1>Seleccionar Personaje</h1>
+                <p>Elige un personaje existente o crea uno nuevo</p>
+            </div>
+            
+            <div class="character-slots">
+                <!-- Character slots will be dynamically added here -->
+                <div class="character-slot empty" id="slot-1">
+                    <div class="add-character">
+                        <i class="fas fa-plus"></i>
+                        <span>Nuevo Personaje</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="back-button" class="btn btn-secondary">Atrás</button>
+                <button id="select-character" class="btn btn-primary" disabled>Seleccionar</button>
+            </div>
+        </div>
+        
+        <!-- Character Creation Screen -->
+        <div id="character-creation" class="screen">
+            <div class="header">
+                <h1>Crear Personaje</h1>
+                <p>Personaliza tu personaje</p>
+            </div>
+            
+            <div class="character-preview">
+                <div class="character-rotation">
+                    <button id="rotate-left" class="rotate-button"><i class="fas fa-chevron-left"></i></button>
+                    <div id="character-model"></div>
+                    <button id="rotate-right" class="rotate-button"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <div class="zoom-controls">
+                    <button id="zoom-in"><i class="fas fa-search-plus"></i></button>
+                    <input type="range" id="zoom-slider" min="0.5" max="2.0" step="0.1" value="1.0">
+                    <button id="zoom-out"><i class="fas fa-search-minus"></i></button>
+                </div>
+            </div>
+            
+            <div class="customization-tabs">
+                <button class="tab-button active" data-tab="appearance">Apariencia</button>
+                <button class="tab-button" data-tab="clothing">Ropa</button>
+                <button class="tab-button" data-tab="tattoos">Tatuajes</button>
+            </div>
+            
+            <div class="customization-panels">
+                <!-- Appearance Panel -->
+                <div id="appearance-panel" class="panel active">
+                    <div class="category-selector">
+                        <select id="appearance-category">
+                            <option value="sex">Género</option>
+                            <option value="parents">Padres</option>
+                            <option value="features">Rasgos</option>
+                            <option value="appearance">Apariencia</option>
+                        </select>
+                    </div>
+                    
+                    <div class="options-container" id="appearance-options">
+                        <!-- Options will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <!-- Clothing Panel -->
+                <div id="clothing-panel" class="panel">
+                    <div class="category-selector">
+                        <select id="clothing-category">
+                            <option value="masks">Máscaras</option>
+                            <option value="torsos">Torsos</option>
+                            <option value="shirts">Camisetas</option>
+                            <option value="pants">Pantalones</option>
+                            <option value="shoes">Zapatos</option>
+                            <option value="hats">Sombreros</option>
+                            <option value="glasses">Gafas</option>
+                            <option value="accessories">Accesorios</option>
+                        </select>
+                    </div>
+                    
+                    <div class="options-container" id="clothing-options">
+                        <!-- Options will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <!-- Tattoos Panel -->
+                <div id="tattoos-panel" class="panel">
+                    <div class="category-selector">
+                        <select id="tattoos-zone">
+                            <option value="head">Cabeza</option>
+                            <option value="torso">Torso</option>
+                            <option value="left_arm">Brazo Izquierdo</option>
+                            <option value="right_arm">Brazo Derecho</option>
+                            <option value="left_leg">Pierna Izquierda</option>
+                            <option value="right_leg">Pierna Derecha</option>
+                        </select>
+                        
+                        <select id="tattoos-collection">
+                            <option value="all">Todas las colecciones</option>
+                            <!-- Collections will be added dynamically -->
+                        </select>
+                    </div>
+                    
+                    <div class="options-container" id="tattoos-options">
+                        <!-- Tattoo options will be added here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="back-to-selection" class="btn btn-secondary">Atrás</button>
+                <button id="randomize" class="btn btn-secondary">Aleatorio</button>
+                <button id="save-character" class="btn btn-primary">Guardar Personaje</button>
+            </div>
+        </div>
+        
+        <!-- Character Info Screen -->
+        <div id="character-info" class="screen">
+            <div class="header">
+                <h1>Información del Personaje</h1>
+                <p>Completa la información de tu personaje</p>
+            </div>
+            
+            <div class="character-info-form">
+                <div class="form-group">
+                    <label for="character-name">Nombre</label>
+                    <input type="text" id="character-name" placeholder="Introduce el nombre de tu personaje">
+                </div>
+                
+                <div class="form-group">
+                    <label for="character-surname">Apellido</label>
+                    <input type="text" id="character-surname" placeholder="Introduce el apellido de tu personaje">
+                </div>
+                
+                <div class="form-group">
+                    <label for="character-birthdate">Fecha de Nacimiento</label>
+                    <input type="date" id="character-birthdate">
+                </div>
+                
+                <div class="form-group">
+                    <label for="character-bio">Biografía (Opcional)</label>
+                    <textarea id="character-bio" rows="4" placeholder="Cuéntanos sobre tu personaje..."></textarea>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="back-to-customization" class="btn btn-secondary">Atrás</button>
+                <button id="confirm-character" class="btn btn-primary">Confirmar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
